@@ -1,0 +1,240 @@
+
+$transition: .2s;
+$itemColor: white;
+$hoveredColor: #f7f7f7;
+$borderStyle: 1px solid #d8d8d8;
+
+$textPadding: 10px 15px;
+
+$buttonSideLength: 30px;
+
+.todo {
+  display: flex;
+  padding: 5px 15px;
+
+  * {
+    font-family: sans-serif;
+  }
+
+  &:hover .todo__button {
+    opacity: 1;
+  }
+
+  &__ {
+    &tabs-container {
+      height: 37px;
+      padding: $textPadding;
+    }
+    &tab {
+      display: inline-block;
+      height: 100%;
+      width: 100px;
+      padding: 0 10px;
+      margin-right: 10px;
+      text-align: center;
+      line-height: 37px;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: $transition;
+
+      &_active {
+        background: #007bff;
+      }
+      &_active &-text {
+        color: white;
+      }
+    }
+    &tab-text {
+      text-decoration: none;
+      color: black;
+      outline: none;
+      vertical-align: middle;
+    }
+
+    &item {
+      flex: 1 0 100%;
+      border-radius: 15px;
+      border: $borderStyle;
+      background: $itemColor;
+      cursor: pointer;
+      transition: $transition;
+
+      &:hover {
+        background: $hoveredColor;
+      }
+    }
+
+    &header {
+      padding: $textPadding;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 50px;
+      box-sizing: border-box;
+    }
+    &header-text {
+      display: block;
+    }
+
+    &text-container {
+      padding: $textPadding;
+      white-space: pre-wrap;
+    }
+
+    &list {
+      //overflow-y: scroll;
+    }
+
+    &buttons-container {
+      flex: 0 0 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    // margin between buttons
+    &button + &button {
+      margin-top: 5px;
+    }
+    &button {
+      display: block;
+      position: relative;
+      width: $buttonSideLength;
+      height: $buttonSideLength;
+      border: $borderStyle;
+      border-radius: 5px;
+      text-align: center;
+      background: $itemColor;
+      cursor: pointer;
+      transition: $transition;
+      opacity: 0;
+
+      &:hover {
+        background: $hoveredColor;
+      }
+
+      &_complete {
+        text-decoration: line-through;
+      }
+    }
+
+    &button-text {
+      display: inline;
+      line-height: $buttonSideLength;
+      vertical-align: middle;
+    }
+
+    &input-form-container {
+      position: absolute;
+      visibility: hidden;
+      top:0;left:0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, .7);
+      overflow: hidden;
+      opacity: 0;
+      z-index: -1;
+      cursor: pointer;
+      transition: .3s;
+    }
+    &input-form-container_active {
+      opacity: 1;
+      visibility: visible;
+      z-index: 999;
+
+      .todo__input-form {
+        top: 200px;
+        opacity: 1;
+      }
+    }
+
+    &input-form {
+      position: absolute;
+      // center
+      left: 25%;
+      width: 50%;
+      // hide
+      top: 110%;
+      opacity: .5;
+      transition: .3s;
+    }
+
+    &input-field {
+      padding: $textPadding;
+      width: 100%;
+      line-height: 1.3;
+      box-sizing: border-box;
+      border: 1px solid lightblue;
+      border-radius: 15px;
+      resize: none;
+      outline: none;
+    }
+
+    &close-button {
+      position: absolute;
+      display: block;
+      outline: none;
+      right: -50px;
+      top: -50px;
+      width: 50px; height: 50px;
+      box-sizing: border-box;
+      line-height: 47px;
+      text-align: center;
+      text-decoration: none;
+      border: 1px solid transparent;
+      border-radius: 15px;
+      &:focus {
+        border-color: gray;
+      }
+    }
+    &close-button-text {
+      line-height: 50px;
+      font-size: 50px;
+      color: black;
+    }
+
+    &add-button, &update-button {
+      position: absolute;
+      display: block;
+      top: calc(100% + 20px);
+      right: 0;
+      width: 50px;
+      height: 50px;
+      // just because
+      line-height: 47px;
+      text-align: center;
+      border-radius: 50%;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: .2s;
+      outline: none;
+    }
+    &add-button {
+      background: #28a745;
+
+      &:hover, &:focus {
+        background: #218838;
+        border-color: gray;
+      }
+    }
+    &update-button {
+      background: #007bff url("/img/edit.png") center center no-repeat;
+      background-size: 50%;
+
+      &:hover, &:focus {
+        background-color: #0069d9;
+      }
+    }
+
+    &add-button-text, &update-button-text {
+      display: inline-block;
+      line-height: 25px;
+      font-size: 25px;
+      vertical-align: middle;
+      /* text-transform: uppercase; */
+      color: white;
+      font-weight: bold;
+    }
+  }
+}

@@ -12,3 +12,5 @@ To deploy app:
 9) `php artisan migrate`
 10) `npm run dev` or `npm run prod`
 11) `php artisan serve`
+
+Or run `deploy.sh` (for linux only)

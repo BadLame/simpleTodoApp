@@ -1,7 +1,0 @@
-0) Install laravel
-1) git pull
-2) .env.example -> .env
-3) edit .env
-4) create database
-5) php artisan migrate
-6)
